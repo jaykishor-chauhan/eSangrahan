@@ -1,49 +1,116 @@
- /* CSS styles for the sign-in page */
- body {
-    background-image: url("namo.webp");
-    background-size: cover;
-    background-position: center;
-    font-family: Arial, sans-serif;
-  }
-  
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: white;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-title {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.form-group input:focus {
+  border-color: #3498db;
+  outline: none;
+  background-color: #fff;
+}
+
+/* Button Styles */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cancel-btn,
+.submit-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 48%;
+}
+
+.cancel-btn {
+  background-color: #f1f1f1;
+  color: #555;
+}
+
+.submit-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #ddd;
+}
+
+.submit-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
   .container {
-    width: 500px;
-    height: 600px;
-    margin:300px auto;
-    background-color: rgba(221, 215, 215, 0.349);
-    padding: 20px 30px 20px 20px;
-    border-radius: 5px;
+    padding: 20px;
+    width: 90%;
+    max-width: 350px;
   }
-  
-  .form-group {
-    margin-bottom: 20px;
+
+  .form-title {
+    font-size: 20px;
   }
-  
-  .form-group label {
-    display: block;
-    font-size: larger;
-    margin-bottom: 5px;
-  }
-  
+
   .form-group input {
+    font-size: 14px;
+  }
+
+  .submit-btn, .cancel-btn {
     width: 100%;
-    padding: 5px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
+    margin-top: 10px;
   }
- 
-  .signin-btn {
-    padding: 10px 20px;
-    border-radius: 3px;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-  }
-   {
-    background-color: #27ac1f;
-    margin-right: 10px;
-  }
-  
-  .signin-btn {
-    background-color: #27ac1f;
-  }
+}
