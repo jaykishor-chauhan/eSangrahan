@@ -14,7 +14,9 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -29,11 +31,11 @@
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="booking form/css/style.css" rel="stylesheet">
 
- <!-- Bootstrap 5 CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Bootstrap 5 Bundle JS (includes Popper.js) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap 5 Bundle JS (includes Popper.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
 
@@ -42,74 +44,155 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-lg-between">
-        <h1 class="logo me-auto me-lg-0"><a href="index.html">E-Sangrahan<span>.</span></a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="index.html">E-Sangrahan<span>.</span></a></h1>
 
-        <nav id="navbar" class="navbar order-last order-lg-0">
-            <ul>
-                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                <li><a class="nav-link scrollto" href="#about">About</a></li>
-                <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                <li><a class="nav-link scrollto" href="login_page.html">Login</a></li>
-                <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                <li><a href="">FAQ</a></li>
-                <li><a class="nav-link scrollto" href="#contact">E-Centers</a></li>
-                <li>
-                  <button class="open-popup ms-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Login
-                  </button>
-                </li>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav>
-        <!-- .navbar -->
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <!-- <li><a class="nav-link scrollto" href="login_page.html">Login</a></li> -->
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><a href="">FAQ</a></li>
+          <li><a class="nav-link scrollto" href="#contact">E-Centers</a></li>
+          <li>
+            <button class="open-popup ms-4" id="openLogin">
+              Login
+            </button>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
     </div>
-</header><!-- End Header -->
+  </header>
+  <!-- ======= Header ======= -->
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal Title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <!-- End Header -->
+
+  <!-- Login Modal -->
+  <div class="modal fade show" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-4 rounded">
+        <h2 class="text-center mb-3">Login</h2>
+        <form action="login.php" method="post">
+          <div class="mb-3">
+            <label for="userName" class="form-label">Username:</label>
+            <input type="text" id="userName" name="userName" class="form-control" placeholder="Enter your username"
+              required>
           </div>
-          <div class="modal-body">
-              This is the body content of the modal.
+          <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password"
+              required>
           </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Understood</button>
+          <div class="row">
+            <div class="col text-center">
+              <button type="submit" class="btn btn-outline-success">Login</button>
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+            </div>
           </div>
+          <div class="row mt-2 mb-2 text-center">
+            <p>New user? <a href="#" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">
+              Create an account</a>
+            </p> <!-- ✅ Opens Signup Modal -->
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <p class="m-0">&copy; 2025 eSangrahan. All rights reserved.</p>
+          </div>        
+        </form>
       </div>
+    </div>
   </div>
-</div>
 
-<!-- Bootstrap Bundle JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Signup Modal -->
+  <div class="modal fade" id="signupModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-4">
+        <h2 class="text-center mb-3">Create an Account</h2>
+        <form action="signup.php" method="post">
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" id="firstName" name="firstName" class="form-control"
+              placeholder="Enter your first name" required>
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter your last name"
+              required>
+          </div>
+          <div class="mb-3">
+            <label for="userName" class="form-label">Username</label>
+            <input type="text" id="userName" name="userName" class="form-control" placeholder="Choose a username"
+              required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" class="form-control"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Password must contain at least one number, one uppercase and lowercase letter, and be at least 8 characters long."
+              placeholder="Enter your password" required>
+          </div>
+          <div class="mb-3">
+            <label for="repeatPassword" class="form-label">Repeat Password</label>
+            <input type="password" id="repeatPassword" name="repeatPassword" class="form-control"
+              placeholder="Confirm your password" required>
+          </div>
+          <div class="row tex-center">
+            <div class="col text-center">
+              <button type="submit" class="btn btn-outline-success">Sign Up</button>
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+          <div class="row text-center mt-2 mb-2">
+            <p>Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">
+              Login </a>
+            </p> <!-- ✅ Opens Login Modal -->
+          </div>
+        </form>
+        <div class="modal-footer d-flex justify-content-center">
+          <p class="m-0">&copy; 2025 eSangrahan. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- ✅ Uses Bootstrap API -->
+  <script>
+    document.getElementById("openLogin").addEventListener("click", function () {
+      var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+      loginModal.show();
+    });
+  </script>
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero"  class="d-flex align-items-center justify-content-center">
+  <section id="hero" class="d-flex align-items-center justify-content-center">
     <div class="container" data-aos="fade-up">
 
       <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
         <div class="col-xl-6 col-lg-8">
-          <h1><pre>Welcome to E-Sangrahan!</pre><span></span></h1>
+          <h1>
+            <pre>Welcome to E-Sangrahan!</pre><span></span>
+          </h1>
           <h2>Where we help you to dispose of electronic wastes for a safer environment</h2>
         </div>
       </div>
 
       <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
-        <a href="#about"><div class="col-xl-2 col-md-4">
-          <div class="icon-box">
-            <i class="bi bi-arrow-right-square"></i>
-            <h3>Learn More</h3> </a>
-          </div>
-        </div>
+        <a href="#about">
+          <div class="col-xl-2 col-md-4">
+            <div class="icon-box">
+              <i class="bi bi-arrow-right-square"></i>
+              <h3>Learn More</h3>
+        </a>
       </div>
+    </div>
+    </div>
 
     </div>
   </section><!-- End Hero -->
@@ -126,15 +209,22 @@
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
             <h3>About E-Sangrahan</h3>
-            <p>Welcome to E Sangrahan, a student-led effort dedicated to making a positive impact on our environment by responsibly managing electronic waste. Our journey started with a shared passion for sustainability and a desire to address the growing issue of e-waste disposal.<Br> As students and beginners in this field, we are committed to learning, growing, and working together to create a cleaner, greener future.</p>
+            <p>Welcome to E Sangrahan, a student-led effort dedicated to making a positive impact on our environment by
+              responsibly managing electronic waste. Our journey started with a shared passion for sustainability and a
+              desire to address the growing issue of e-waste disposal.<Br> As students and beginners in this field, we
+              are committed to learning, growing, and working together to create a cleaner, greener future.</p>
 
             <h3>Our Mission</h3>
-            <p>Our mission is simple yet impactful: to responsibly collect, recycle, and dispose of electronic waste while spreading awareness about the importance of e-waste recycling.<br> As beginners, we are eager to learn and adapt, continuously improving our practices to minimize the environmental impact of e-waste.</p>
-            <p>In this mission, we not only spread awareness about electronic waste, but also let people know about there nearest e-waste center. This will help common people to dispose of these wastes and also earn some rewards in return. We also aim to add a home pickup facilities.</p>
-            
+            <p>Our mission is simple yet impactful: to responsibly collect, recycle, and dispose of electronic waste
+              while spreading awareness about the importance of e-waste recycling.<br> As beginners, we are eager to
+              learn and adapt, continuously improving our practices to minimize the environmental impact of e-waste.</p>
+            <p>In this mission, we not only spread awareness about electronic waste, but also let people know about
+              there nearest e-waste center. This will help common people to dispose of these wastes and also earn some
+              rewards in return. We also aim to add a home pickup facilities.</p>
+
             <!-- <p><strong>:</strong> </p>
             <p><strong>:</strong> </p> -->
-            
+
 
           </div>
         </div>
@@ -147,30 +237,36 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row">
-          <div class="image col-lg-6" style='background-image: url("assets/img/about-2.png");' data-aos="fade-right"></div>
+          <div class="image col-lg-6" style='background-image: url("assets/img/about-2.png");' data-aos="fade-right">
+          </div>
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
             <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
               <h2 style="padding-bottom:15px">Why Choose Us?</h2>
               <i class="bx bx-receipt"></i>
               <h4>Passion for Learning</h4>
-              <p>We may be students , but our enthusiasm to make a difference fuels our commitment to gaining knowledge and expertise in e-waste recycling.</p>
+              <p>We may be students , but our enthusiasm to make a difference fuels our commitment to gaining knowledge
+                and expertise in e-waste recycling.</p>
             </div>
             <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
               <i class="bx bx-cube-alt"></i>
               <h4>Community-First Approach</h4>
-              <p>We believe in the power of community. Our grassroots initiative aims to engage and educate our local community about the significance of e-waste management.</p>
+              <p>We believe in the power of community. Our grassroots initiative aims to engage and educate our local
+                community about the significance of e-waste management.</p>
             </div>
             <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
               <i class="bx bx-images"></i>
               <h4>Hands-On Experience</h4>
-              <p>We offer a hands-on experience for individuals and businesses interested in participating in responsible e-waste disposal. As beginners, we're open to collaboration and feedback to improve our service continually.</p>
+              <p>We offer a hands-on experience for individuals and businesses interested in participating in
+                responsible e-waste disposal. As beginners, we're open to collaboration and feedback to improve our
+                service continually.</p>
             </div>
 
-             <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
+            <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
               <i class="bx bx-recycle"></i>
               <h4>Recycling</h4>
-              <p>We extract valuable materials after shredding the e-waste into tiny pieces that could be reused in a new electronic appliance.</p>
-            </div> 
+              <p>We extract valuable materials after shredding the e-waste into tiny pieces that could be reused in a
+                new electronic appliance.</p>
+            </div>
           </div>
         </div>
 
@@ -186,21 +282,25 @@
           <p>Check our Services</p>
         </div>
 
-        
-        <div class="row" >
+
+        <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
               <div class="icon"><i class="bi bi-truck"></i></div>
               <h4><a href="./booking form/booking.html">Home Pickup</a></h4>
-              <p style="font-size: medium;"> A specialized vehicle designed to facilitate the convenient and eco-friendly collection of electronic waste directly from residential locations.</p>
+              <p style="font-size: medium;"> A specialized vehicle designed to facilitate the convenient and
+                eco-friendly collection of electronic waste directly from residential locations.</p>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200" >
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+            data-aos-delay="200">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-map"></i></div>
               <h4><a href=" ./booking form/dispose.html">Dispose of on your own</a></h4>
-              <p style="font-size: medium;">By disposing of your own electronic waste, the recycling facility will give you reward points dependent on how much trash you generate. This reward point might be useful in the future.
+              <p style="font-size: medium;">By disposing of your own electronic waste, the recycling facility will give
+                you reward points dependent on how much trash you generate. This reward point might be useful in the
+                future.
               </p>
             </div>
           </div>
@@ -212,7 +312,7 @@
             </div>
           </div>
         </div>
- 
+
 
       </div>
     </section><!-- End Services Section -->
@@ -236,18 +336,22 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row no-gutters">
-          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" data-aos="fade-right" data-aos-delay="100"></div>
-          <div class="col-xl-7 ps-4 ps-lg-5 pe-4 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left" data-aos-delay="100">
+          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"
+            data-aos="fade-right" data-aos-delay="100"></div>
+          <div class="col-xl-7 ps-4 ps-lg-5 pe-4 pe-lg-1 d-flex align-items-stretch" data-aos="fade-left"
+            data-aos-delay="100">
             <div class="content d-flex flex-column justify-content-center">
               <h3>Number of people satisfied with our services</h3>
               <p>
-                Live tracking of the number of people happy with our services, active locations, daily users, and rewards..
+                Live tracking of the number of people happy with our services, active locations, daily users, and
+                rewards..
               </p>
               <div class="row">
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-emoji-smile"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="2" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="2"
+                      class="purecounter"></span>
                     <p><strong>Happy Clients</strong></p>
                   </div>
                 </div>
@@ -255,7 +359,8 @@
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-journal-richtext"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="2" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="2"
+                      class="purecounter"></span>
                     <p><strong>Active locations</strong></p>
                   </div>
                 </div>
@@ -263,7 +368,8 @@
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-clock"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="35" data-purecounter-duration="4" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="35" data-purecounter-duration="4"
+                      class="purecounter"></span>
                     <p><strong>Daily active users</strong></p>
                   </div>
                 </div>
@@ -271,7 +377,8 @@
                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                   <div class="count-box">
                     <i class="bi bi-award"></i>
-                    <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="4" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="4"
+                      class="purecounter"></span>
                     <p><strong>Rewards</strong> Rewards given to people in return</p>
                   </div>
                 </div>
@@ -282,61 +389,62 @@
 
       </div>
     </section><!-- End Counts Section -->
-    
- <!-- ======= Testimonials Section ======= -->
- <section id="testimonials" class="testimonials">
-  <div class="container" data-aos="zoom-in">
 
-    <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-      <div class="swiper-wrapper">
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container" data-aos="zoom-in">
 
-        <div class="swiper-slide">
-          <div class="testimonial-item">
-            <!-- <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt=""> -->
-            <h3>Gene Green</h3>
-            <h4>Ex Baseball Player </h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              E-waste is the fastest growing waste stream and can pose serious environmental and health problems around the world when not handled properly
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <!-- <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt=""> -->
+                <h3>Gene Green</h3>
+                <h4>Ex Baseball Player </h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  E-waste is the fastest growing waste stream and can pose serious environmental and health problems
+                  around the world when not handled properly
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <!-- <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt=""> -->
+                <h3>Pam Shoemaker</h3>
+                <h4>Professor</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  When you put the whole picture together, <b>recycling</b> is the right thing to do
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <!-- <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt=""> -->
+                <h3>Annie Leonard</h3>
+                <h4>Environemental Proponent</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  There is no such thing as 'away'. When we throw anything away, it mus go somewhere.
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+
+
           </div>
-        </div><!-- End testimonial item -->
+          <div class="swiper-pagination"></div>
+        </div>
 
-        <div class="swiper-slide">
-          <div class="testimonial-item">
-            <!-- <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt=""> -->
-            <h3>Pam Shoemaker</h3>
-            <h4>Professor</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              When you put the whole picture together, <b>recycling</b> is the right thing to do
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-          </div>
-        </div><!-- End testimonial item -->
-
-        <div class="swiper-slide">
-          <div class="testimonial-item">
-            <!-- <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt=""> -->
-            <h3>Annie Leonard</h3>
-            <h4>Environemental Proponent</h4>
-            <p>
-              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              There is no such thing as 'away'. When we throw anything away, it mus go somewhere.
-              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-            </p>
-          </div>
-        </div><!-- End testimonial item -->
-
-      
-        
       </div>
-      <div class="swiper-pagination"></div>
-    </div>
-
-  </div>
-</section><!-- End Testimonials Section -->
+    </section><!-- End Testimonials Section -->
 
     <!-- ======= Team Section ======= -->
     <section id="team" class="team">
@@ -452,7 +560,10 @@
         </div>
 
         <div>
-          <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62204.34229267467!2d77.55936080737911!3d12.986468417808055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17cf4c7dca51%3A0x92c6ed9316ffcde3!2sE%20Waste%20Social%20Pvt%20Ltd.!5e0!3m2!1sen!2sin!4v1695401745359!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"> frameborder="0" allowfullscreen></iframe>
+          <iframe style="border:0; width: 100%; height: 270px;"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62204.34229267467!2d77.55936080737911!3d12.986468417808055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17cf4c7dca51%3A0x92c6ed9316ffcde3!2sE%20Waste%20Social%20Pvt%20Ltd.!5e0!3m2!1sen!2sin!4v1695401745359!5m2!1sen!2sin"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"> frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="row mt-5">
@@ -577,7 +688,10 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>E-Sangrahan</span></strong>. All Rights Reserved
+        <p class="m-0">&copy; 2025 eSangrahan. All rights reserved.</p>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -590,7 +704,8 @@
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>

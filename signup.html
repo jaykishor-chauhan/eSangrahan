@@ -4,65 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
-  <link href="sign_up.css" rel="stylesheet">
-  <script src="./sign_up.js" defer></script>
-  <script src="https://kit.fontawesome.com/220cf49541.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    a:hover {
+      text-decoration: underline !important;
+    }
+  </style>
 </head>
-<body>
-  <div class="container">
-    <h1 class="form-title">Create an Account</h1>
-    
+<body class="d-flex justify-content-center align-items-center vh-100" style="background: linear-gradient(to right, #4facfe, #00f2fe);">
+  <div class="container bg-white p-4 rounded shadow" style="max-width: 400px;">
+    <h2 class="text-center mb-3">Create an Account</h2>
     <form action="signup.php" method="post">
-      <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
+      <div class="mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter your first name" required>
       </div>
-      
-      <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name">
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter your last name" required>
       </div>
-      
-      <div class="form-group">
-        <label for="userName">Username</label>
-        <input type="text" id="userName" name="userName" required placeholder="Choose a username">
+      <div class="mb-3">
+        <label for="userName" class="form-label">Username</label>
+        <input type="text" id="userName" name="userName" class="form-control" placeholder="Choose a username" required>
       </div>
-      
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required placeholder="Enter your email">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
       </div>
-      
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" 
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" name="password" class="form-control" 
                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  
                title="Password must contain at least one number, one uppercase and lowercase letter, and be at least 8 characters long." 
-               required placeholder="Enter your password">
+               placeholder="Enter your password" required>
       </div>
-      
-      <div class="form-group">
-        <label for="repeatPassword">Repeat Password</label>
-        <input type="password" id="repeatPassword" name="repeatPassword" required placeholder="Confirm your password">
+      <div class="mb-3">
+        <label for="repeatPassword" class="form-label">Repeat Password</label>
+        <input type="password" id="repeatPassword" name="repeatPassword" class="form-control" placeholder="Confirm your password" required>
       </div>
-      
-      <div class="form-actions">
-        <button type="button" class="cancel-btn" onclick="window.location.href='index.html'">Cancel</button>
-        <button type="submit" class="submit-btn">Sign Up</button>
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary w-48" onclick="window.location.href='index.html'">Cancel</button>
+        <button type="submit" class="btn btn-primary w-48">Sign Up</button>
       </div>
     </form>
+    <div class="text-center mt-3">
+      <a href="login.html" class="text-decoration-none">Already have an account? Login</a>
+    </div>
   </div>
-
   <script>
-    document.querySelector(".submit-btn").addEventListener("click", function(event) {
+    document.querySelector(".btn-primary").addEventListener("click", function(event) {
       const password = document.getElementById("password");
       const repeatPassword = document.getElementById("repeatPassword");
-
       if (password.value !== repeatPassword.value) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault();
         alert("Passwords do not match! Please try again.");
       }
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

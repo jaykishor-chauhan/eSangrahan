@@ -3,40 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
-  <link href="login.css" rel="stylesheet">
+  <title>Login & Signup Modal</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h2>Login</h2>
-    <form action="login.php" method="post">
-      <div class="form-group">
-        <label for="userName">Username:</label>
-        <input type="text" id="userName" name="userName" placeholder="Enter your username" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" required>
-      </div>
-      <div class="form-actions">
-        <input type="submit" class="signin-btn" value="Login">
-        <button type="button" class="cancel-btn" onclick="window.location.href='index.html'">Cancel</button>
-      </div>
-      <div class="form-group new-user">
-        <a href="signup.html">Create a new account</a>
-      </div>
-    </form>
-  </div>
 
-  <script>
-    // Simplified script without the repeatPassword check
-    document.querySelector(".signin-btn").addEventListener("click", function(event) {
-      const password = document.getElementById("password").value;
-      if (!password) {
-        event.preventDefault(); // Prevent form submission if no password entered
-        alert("Please enter your password.");
-      }
-    });
-  </script>
+<!-- Login Modal (Opens by Default) -->
+<div class="modal fade show" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="login.php" method="post">
+          <div class="mb-3">
+            <label for="userName" class="form-label">Username:</label>
+            <input type="text" id="userName" name="userName" class="form-control" placeholder="Enter your username" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" 
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+              title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" required>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p>New user? <a href="#" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Create an account</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Signup Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalLabel">Create an Account</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="signup.php" method="post">
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter your first name" required>
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter your last name" required>
+          </div>
+          <div class="mb-3">
+            <label for="userName" class="form-label">Username</label>
+            <input type="text" id="userName" name="userName" class="form-control" placeholder="Choose a username" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" class="form-control" 
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  
+              title="Password must contain at least one number, one uppercase and lowercase letter, and be at least 8 characters long." 
+              placeholder="Enter your password" required>
+          </div>
+          <div class="mb-3">
+            <label for="repeatPassword" class="form-label">Repeat Password</label>
+            <input type="password" id="repeatPassword" name="repeatPassword" class="form-control" placeholder="Confirm your password" required>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-success">Sign Up</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <p>Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Login</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Auto-open Login Modal on Page Load -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var myModal = new bootstrap.Modal(document.getElementById('loginModal'));
+    myModal.show();
+  });
+</script>
+
 </body>
 </html>
