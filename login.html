@@ -53,6 +53,17 @@
 </head>
 
 <body>
+  <!-- Alert for invalid login username and password -->
+  <script>
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+    
+        if (status === 'invalid') {
+            alert('Invalid Username or Password! Please try again.');
+        }
+    };
+    </script>    
 
   <div class="login-card">
     <h2 class="text-center mb-4">Welcome Back!</h2>

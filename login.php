@@ -1,48 +1,77 @@
 <?php
 session_start();
 
+// Database connection
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "esangrahandb"; // use same as signup
+$dbname = "esangrahandb"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Check connection
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
-$userName = $_POST['userName'];
-$inputPassword = $_POST['password'];
-
-// Prepared statement to prevent SQL injection
-$stmt = $conn->prepare("SELECT * FROM newusers WHERE username = ?");
-$stmt->bind_param("s", $userName);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows === 1) {
-  $row = $result->fetch_assoc();
-
-  if (password_verify($inputPassword, $row['password'])) {
+// Check if POST data exists
+if (isset($_POST['userName']) && isset($_POST['password'])) {
     
-    // Start session
-    $_SESSION['username'] = $row['username'];
-    $_SESSION['firstName'] = $row['first_name'];
-    $_SESSION['email'] = $row['email'];
-    echo "<script>alert('Welcome " . $row['first_name'] . "! You have successfully logged in.');</script>";
-    $_SESSION['just_logged_in'] = true;
+    // Get input values and sanitize
+    $userName = trim($_POST['userName']);
+    $inputPassword = trim($_POST['password']);
+    
+    // Prepare SQL to find user
+    $stmt = $conn->prepare("SELECT * FROM newusers WHERE userName = ?");
+    $stmt->bind_param("s", $userName);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+        
+        if (password_verify($inputPassword, $row['password'])) {
+            // Correct password
+            session_regenerate_id(true);
+            
+            $_SESSION['userName'] = $row['userName'];
+            $_SESSION['fullName'] = $row['fullName'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['createdAt'] = $row['createdAt'];
 
-    header("Location: innerPage.php");
-    exit();
-  } else {
-    // print_r($row);
-    echo "<script>alert('Incorrect password.'); window.location.href = 'login.html';</script>";
-  }
+            // Login success alert and redirect using JavaScript
+            echo "<script>
+                alert('Login successful!');
+                window.location.href = 'innerPage.php';
+            </script>";
+            exit();
+        } else {
+            // Incorrect password
+            echo "<script>
+                alert('Incorrect Password. Please try again.');
+                window.location.href = 'login.html';
+            </script>";
+            exit();
+        }
+    } else {
+        // Username not found
+        echo "<script>
+            alert('User not found. Please check your username.');
+            window.location.href = 'login.html';
+        </script>";
+        exit();
+    }
 } else {
-  echo "<script>alert('User not found.'); window.location.href = 'login.html';</script>";
+    // No POST data
+    header("Location: login.html");
+    exit();
 }
 
+// Close connections
 $stmt->close();
 $conn->close();
 ?>

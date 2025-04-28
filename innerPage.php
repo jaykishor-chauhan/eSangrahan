@@ -1,15 +1,25 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['username']) || !isset($_SESSION['email'])) {
-  header("Location: login.html");
-  exit();
+// First: Check if user is logged in
+if (!isset($_SESSION['userName']) || !isset($_SESSION['email'])) {
+    header("Location: login.html");
+    exit();
 }
 
-$username = $_SESSION['username'];
-$firstName = $_SESSION['firstName'];
+// Now safe to access session variables
+$userName = $_SESSION['userName'];
+$fullName = $_SESSION['fullName'];
 $email = $_SESSION['email'];
+$createdAt = $_SESSION['createdAt'];
+
+// Second: Handle status alert (after login)
+if (isset($_GET['status']) && $_GET['status'] === 'success') {
+    echo "<script>alert('Login successful!');</script>";
+}
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,14 +97,14 @@ $email = $_SESSION['email'];
       <div class="user-container">
         <button class="btn-icon" onclick="togglePopup()">
           <div class="user-info">
-            <span class="name-text"><?php echo htmlspecialchars($firstName); ?></span>
+            <span class="name-text"><?php echo htmlspecialchars($fullName); ?></span>
           </div>
           <i class="bi bi-person-circle"></i>
         </button>
 
         <!-- Dropdown Menu -->
         <div id="userPopup" class="dropdown-popup">
-          <p class="welcome-text">Hello, <?php echo htmlspecialchars($firstName); ?>!</p>
+          <p class="welcome-text">Hello, <?php echo htmlspecialchars($fullName); ?>!</p>
           <button type="button" class="popup-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             👤 View Profile
           </button>
@@ -264,7 +274,7 @@ $email = $_SESSION['email'];
             class="rounded-circle mb-3 shadow"
             style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #f8f9fa;">
           <h4 class="fw-semibold mb-4" style="color: #8e24aa;">
-          <?php echo htmlspecialchars($firstName); ?>
+          <?php echo htmlspecialchars($fullName); ?>
           </h4>
 
           <!-- Details Section -->
@@ -281,8 +291,8 @@ $email = $_SESSION['email'];
             <div class="d-flex align-items-start gap-3 border-bottom pb-2">
               <i class="bi bi-telephone-fill text-success fs-5"></i>
               <div>
-                <div class="fw-semibold">Phone</div>
-                <div>+123456789</div>
+                <div class="fw-semibold">Account Created</div>
+                <div><?php echo htmlspecialchars($createdAt); ?></div>
               </div>
             </div>
 
@@ -290,7 +300,7 @@ $email = $_SESSION['email'];
               <i class="bi bi-person-vcard-fill text-primary fs-5"></i>
               <div>
                 <div class="fw-semibold">User Name</div>
-                <div><?php echo htmlspecialchars($username); ?></div>
+                <div><?php echo htmlspecialchars($userName); ?></div>
               </div>
             </div>
             <!-- Change Password -->
