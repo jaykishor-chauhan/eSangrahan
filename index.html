@@ -30,6 +30,67 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="booking form/css/style.css" rel="stylesheet">
+
+
+  <!-- css for team testimonial -->
+  <style>
+    /* Team Card Image Styling */
+    .team-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      /* Keeps aspect ratio, crops to fit */
+      border-radius: 0.5rem 0.5rem 0 0;
+      transition: transform 0.4s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* On hover, zoom in */
+    .team-card:hover .team-img {
+      transform: scale(1.05);
+    }
+
+    /* Social icons overlay */
+    .team-social {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .team-card:hover .team-social {
+      opacity: 1;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 0.75rem;
+      border-radius: 50px;
+    }
+
+    .team-social a {
+      color: #fff;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .team-social a:hover {
+      color: #0d6efd;
+    }
+
+    /* Card tweaks */
+    .team-card {
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background-color: #fff;
+      transition: transform 0.3s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-body {
+      padding: 1.25rem;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -344,93 +405,61 @@
           <p>Check our Team</p>
         </div>
 
-        <div class="row">
+        <div class="row g-4 justify-content-center">
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img src="./assets/img/shiv.jpeg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+          <!-- Member 1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card team-card border-0 shadow-sm h-100 text-center">
+              <div class="position-relative">
+                <img src="assets/img/team/image.png" class="card-img-top team-img" alt="Shivram">
+                <div class="team-social position-absolute top-50 start-50 translate-middle d-flex gap-3">
+                  <a href="#"><i class="bi bi-twitter"></i></a>
+                  <a href="#"><i class="bi bi-facebook"></i></a>
+                  <a href="#"><i class="bi bi-instagram"></i></a>
+                  <a href="#"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
-              <div class="member-info">
-                <h4>Shivram</h4>
-                <span>Leader</span>
+              <div class="card-body">
+                <h5 class="card-title mb-1">Jaykishor</h5>
+                <p class="text-primary">Developer</p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="200">
-              <div class="member-img">
-                <img src="assets/img/aarav.jpeg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+          <!-- Member 2 -->
+          <div class="col-lg-4 col-md-4">
+            <div class="card team-card border-0 shadow-sm h-100 text-center">
+              <div class="position-relative">
+                <img src="assets/img/team/image.png" class="card-img-top team-img" alt="Aarav">
+                <div class="team-social position-absolute top-50 start-50 translate-middle d-flex gap-3">
+                  <a href="#"><i class="bi bi-twitter"></i></a>
+                  <a href="#"><i class="bi bi-facebook"></i></a>
+                  <a href="#"><i class="bi bi-instagram"></i></a>
+                  <a href="#"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
-              <div class="member-info">
-                <h4>Aarav </h4>
-                <span>Member</span>
+              <div class="card-body">
+                <h5 class="card-title mb-1">Aarav</h5>
+                <p class="text-primary">Developer</p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="300">
-              <div class="member-img">
-                <img src="assets/img/sumit.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+          <!-- Member 3 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card team-card border-0 shadow-sm h-100 text-center">
+              <div class="position-relative">
+                <img src="assets/img/team/image.png" class="card-img-top team-img" alt="Sumit">
+                <div class="team-social position-absolute top-50 start-50 translate-middle d-flex gap-3">
+                  <a href="#"><i class="bi bi-twitter"></i></a>
+                  <a href="#"><i class="bi bi-facebook"></i></a>
+                  <a href="#"><i class="bi bi-instagram"></i></a>
+                  <a href="#"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
-              <div class="member-info">
-                <h4>Sumit</h4>
-                <span>Member</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="400">
-              <div class="member-img">
-                <img src="n.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Nischal</h4>
-                <span>Member</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="400">
-              <div class="member-img">
-                ?<img src="assets/img/arvind.jpeg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Aravinda</h4>
-                <span>Member</span>
+              <div class="card-body">
+                <h5 class="card-title mb-1">Vivek</h5>
+                <p class="text-primary">Developer</p>
               </div>
             </div>
           </div>
@@ -438,7 +467,10 @@
         </div>
 
       </div>
-    </section><!-- End Team Section -->
+    </section>
+    <!-- End Team Section -->
+
+
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
@@ -580,7 +612,7 @@
         <p class="m-0">&copy; 2025 eSangrahan. All rights reserved.</p>
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        
+
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->

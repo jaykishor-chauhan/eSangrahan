@@ -3,8 +3,8 @@ session_start();
 
 // First: Check if user is logged in
 if (!isset($_SESSION['userName']) || !isset($_SESSION['email'])) {
-    header("Location: login.html");
-    exit();
+  header("Location: login.html");
+  exit();
 }
 
 // Now safe to access session variables
@@ -15,7 +15,7 @@ $createdAt = $_SESSION['createdAt'];
 
 // Second: Handle status alert (after login)
 if (isset($_GET['status']) && $_GET['status'] === 'success') {
-    echo "<script>alert('Login successful!');</script>";
+  echo "<script>alert('Login successful!');</script>";
 }
 ?>
 
@@ -270,11 +270,11 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
         <div class="modal-body text-center px-4 py-4"
           style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #444;">
           <!-- Profile Picture -->
-          <img src="https://via.placeholder.com/120" alt="Profile Picture"
+          <img src="https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Profile Picture"
             class="rounded-circle mb-3 shadow"
             style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #f8f9fa;">
           <h4 class="fw-semibold mb-4" style="color: #8e24aa;">
-          <?php echo htmlspecialchars($fullName); ?>
+            <?php echo htmlspecialchars($fullName); ?>
           </h4>
 
           <!-- Details Section -->
@@ -303,13 +303,58 @@ if (isset($_GET['status']) && $_GET['status'] === 'success') {
                 <div><?php echo htmlspecialchars($userName); ?></div>
               </div>
             </div>
+            <!-- Change Profile Section -->
+            <div class="d-flex align-items-start border-bottom pb-2 gap-3">
+              <i class="bi bi-person-fill text-primary fs-5"></i>
+              <div>
+                <div class="fw-semibold mb-1">Profile</div>
+                <a 
+                  href="profile-change.php?email=<?= $email ?>"
+                  id="changeProfileBtn" 
+                  class="btn btn-sm btn-outline-success rounded-pill px-3 py-1"
+                  style="font-size: 0.875rem;"
+                >Change Profile</a>
+
+                <!-- Optional: Place to show status/feedback message -->
+                <div id="statusMessage" class="mt-2"></div>
+
+              </div>
+            </div>
+
+            <script>
+              document.getElementById("changeProfileBtn").addEventListener("click", function() {
+                let userEmail = "<?php echo htmlspecialchars($email); ?>"; // Get the email from PHP session variable
+
+                // Send the request to the PHP script to update the profile
+                fetch("update-profile.php", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: "email=" + encodeURIComponent(userEmail) // Send the email via POST
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                    // Show feedback to the user
+                    if (data.success) {
+                      document.getElementById("statusMessage").innerText = "Profile updated successfully!";
+                    } else {
+                      document.getElementById("statusMessage").innerText = "Error updating profile: " + data.message;
+                    }
+                  })
+                  .catch(error => {
+                    document.getElementById("statusMessage").innerText = "An error occurred. Please try again.";
+                  });
+              });
+            </script>
+
             <!-- Change Password -->
             <div class="d-flex align-items-start border-bottom pb-2 gap-3">
               <i class="bi bi-lock-fill text-warning fs-5"></i>
               <div>
                 <div class="fw-semibold mb-1">Password</div>
-                <button class="btn btn-sm btn-outline-warning rounded-pill px-3 py-1"
-                  style="font-size: 0.875rem;">Change Password</button>
+                <a href="forgetpassword.html" class="btn btn-sm btn-outline-warning rounded-pill px-3 py-1"
+                  style="font-size: 0.875rem;">Change Password</a>
               </div>
             </div>
 
